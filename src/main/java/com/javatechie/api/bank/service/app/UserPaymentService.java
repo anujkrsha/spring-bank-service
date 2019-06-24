@@ -11,11 +11,24 @@ import javax.annotation.Resource;
 @PropertySource(value= {"classpath:application.properties"})
 public class UserPaymentService {
 	
-	@Autowired
-	@Qualifier("paytm")
-	//@Res
+	//@Autowired
+	//autowiring by name
+	//private Payment paytm; 
+	
 	private Payment payment;
 	
+	//Constructor based Autowiring
+	@Autowired(required=false)
+	public UserPaymentService(@Qualifier("paytm") Payment payment) {
+		this.payment = payment;
+	}
+	
+	//Setter based Autowiring
+	@Autowired(required=false)
+	public void setPayment(@Qualifier("phonePe") Payment payment) {
+		this.payment = payment;
+	}
+
 	public String processPayment() {
 		return payment.doTransaction();
 	}

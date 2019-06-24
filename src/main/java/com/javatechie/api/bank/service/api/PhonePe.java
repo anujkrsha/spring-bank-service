@@ -1,7 +1,9 @@
 package com.javatechie.api.bank.service.api;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+//@Primary
 @Service
 public class PhonePe implements Payment{
 
